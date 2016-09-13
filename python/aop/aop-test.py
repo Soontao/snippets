@@ -14,10 +14,10 @@ def log(func,*args,**kwargs):
     funcreturn = func(*args,**kwargs)
     print("func %s be invoke"%func.__name__)
     print ('param is ',args )
-    return funcreturn;
+    return funcreturn
 
 # 注册log advice到所有方法
-aop.registeAdvice('',log);
+aop.registeAdvice('',log)
 
 # 获取代理并调用printdate方法
 aop.getProxy(printDate)(datetime.datetime.today())

@@ -3,16 +3,16 @@ import inspect
 import datetime
 import proxy
 
-advices = {};
+advices = {}
 
 # AOP代理 查找advice 并执行
 def aopHandler(func,*args,**kwargs):
-    result=None;
+    result=None
     for pattern in advices:
         if str.startswith(func.__name__,pattern):
             # 调用advice
             result = advices[pattern](func,*args,**kwargs)
-    return result;
+    return result
 
 # 获取AOP代理
 def getProxy(func):
@@ -20,4 +20,4 @@ def getProxy(func):
 
 # 注册advice
 def registeAdvice(pattern,advice):
-    advices[pattern] = advice;
+    advices[pattern] = advice

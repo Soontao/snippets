@@ -9,7 +9,7 @@ advices = {};
 def aopHandler(func,*args,**kwargs):
     result=None;
     for pattern in advices:
-        if str.startswith(func.func_name,pattern):
+        if str.startswith(func.__name__,pattern):
             # 调用advice
             result = advices[pattern](func,*args,**kwargs)
     return result;

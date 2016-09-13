@@ -4,7 +4,7 @@ import datetime
 
 # 默认处理
 def defaultHandler(func,*args,**kwargs):
-    print("function %s has been invoked "%func.func_name)
+    print("function %s has been invoked "%func.__name__)
     result = func(*args,**kwargs);
     return result;
 

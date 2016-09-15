@@ -19,7 +19,7 @@ def inject(func):
         return result
     return wrapper
 
-# 注册对象到上下文容器
+# 注册对象到上下文容器           
 def register(name,value):
     context[name]=value
  

@@ -41,7 +41,7 @@ const select_sort = list => {
             });
             result.push(min);
             // 从元素列删除已经选择出的元素
-            delete(list[index]);
+            delete (list[index]);
         }
         list = result;
     }
@@ -65,11 +65,52 @@ const bubble_sort = list => {
     return list;
 }
 
+
+
+const quick_sort = (array) => {
+
+    /**
+     * swap 2 nums in array
+     */
+    const swap = (array, left, right) => {
+        const tmp = array[left];
+        array[left] = array[right];
+        array[right] = tmp;
+        return array;
+    }
+
+    /**
+     * partition
+     */
+    const partition = (array, left, right) => {
+        let center_index = left;
+        const pivot = array[right];
+        for (let i = left; i < right; i++) {
+            if (array[i] < pivot) {
+                swap(array, center_index, i)
+                center_index++;
+            }
+        }
+        swap(array, right, center_index);
+        return center_index;
+    }
+
+    /**
+     * 递归排序
+     */
+    const sort = (array, left, right) => {
+        if (left > right) return;
+        const center = partition(array, left, right);
+        sort(array, left, center - 1);
+        sort(array, center + 1, right);
+        return array
+    }
+
+    return sort(array, 0, array.length - 1);
+
+}
+
 console.log(insert_sort([3, 42, 5, 23, 43, 52, 43, 2, 3, 51, 43, 5]));
 console.log(bubble_sort([3, 42, 5, 23, 43, 52, 43, 2, 3, 51, 43, 5]))
 console.log(select_sort([3, 42, 5, 23, 43, 52, 43, 2, 3, 51, 43, 5]));
-
-
-// [ 2, 3, 3, 5, 5, 23, 42, 43, 43, 43, 51, 52 ]
-// [ 2, 3, 3, 5, 5, 23, 42, 43, 43, 43, 51, 52 ]
-// [ 2, 3, 3, 5, 5, 23, 42, 43, 43, 43, 51, 52 ]
+console.log(quick_sort([3, 42, 5, 23, 43, 52, 43, 2, 3, 51, 43, 5]));

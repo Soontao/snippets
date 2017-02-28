@@ -66,7 +66,11 @@ const bubble_sort = list => {
 }
 
 
-
+/**
+ * 快速排序
+ * 
+ * 
+ */
 const quick_sort = (array) => {
 
     /**
